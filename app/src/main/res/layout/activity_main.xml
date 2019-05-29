@@ -21,5 +21,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="获取类的成员构造函数"/>
+
+        <Button
+            android:id="@+id/callConstructor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取构造函数并调用构造函数"/>
+
+        <Button
+            android:id="@+id/callPrivateMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取私有函数并调用私有函数"/>
+
+        <Button
+            android:id="@+id/callPrivateStaticMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取私有静态函数并调用私有静态函数"/>
+
+
+        <Button
+            android:id="@+id/setPrivateField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取私有变量并设置其值"/>
+
+        <Button
+            android:id="@+id/setPrivateStaticField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取私有静态变量并设置其值"/>
+
+        <Button
+            android:id="@+id/getGenericFiled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取泛型变量"/>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
