@@ -47,8 +47,9 @@ public class ReflectForMember {
 
             Class[] p2 = {int.class, String.class};
             Constructor c3 = temp.getDeclaredConstructor(p2);
+            c3.setAccessible(true);
             Object object3 = c3.newInstance(4,"xiongliang");
-
+            Log.i("msg","");
 
         }catch (Exception e){
             e.printStackTrace();
@@ -70,7 +71,7 @@ public class ReflectForMember {
 
             Object argList[] = {"xiongliang"};
             Object result = method.invoke(object1,argList);
-
+            Log.i("msg","调用私有方法成功"+result);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -85,7 +86,9 @@ public class ReflectForMember {
             Class[] p1 = {String.class};
             Method method = temp.getDeclaredMethod("callPrivateStaticMethod",p1);
             method.setAccessible(true);
-            method.invoke(null);
+            Object argList[] = {"xiongliang"};
+            Object result = method.invoke(null,argList);
+            Log.i("msg","调用私有静态方法成功"+result);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -105,6 +108,9 @@ public class ReflectForMember {
             field.setAccessible(true);
             Object fieldObject = field.get(object1);
             field.set(object1,"test");
+
+            Object fieldValue  = field.get(object1);
+            Log.i("msg","修改私有变量成功"+fieldValue);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -116,12 +122,11 @@ public class ReflectForMember {
     public void setPrivateStaticField(){
         try{
             Class temp = Class.forName("com.xiongliang.reflectionproject.reflect.Test");
-
-
             Field field = temp.getDeclaredField("address");
             field.setAccessible(true);
             Object fieldObject = field.get(null);
             field.set(fieldObject,"test");
+            Log.i("msg","修改私有静态变量成功"+ field.get(null));
         }catch (Exception e){
             e.printStackTrace();
         }
