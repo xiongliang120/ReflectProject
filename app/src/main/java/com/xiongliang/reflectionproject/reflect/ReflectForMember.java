@@ -138,9 +138,19 @@ public class ReflectForMember {
      */
     public void getGenericFiled(){
         try{
-            Class temp = Class.forName("com.xiongliang.reflectionproject.reflect.GenericTest");
-            Field mInstanceField = temp.getDeclaredField("mInstance");
-            mInstanceField.setAccessible(true);
+            AMN.getgDefault().get();
+            Class<?> instance = Class.forName("com.xiongliang.reflectionproject.reflect.GenericTest");
+            Field mInstanceFieldId = instance.getDeclaredField("mInstance");
+            mInstanceFieldId.setAccessible(true);
+
+            Class<?> temp = Class.forName("com.xiongliang.reflectionproject.reflect.AMN");
+            Field mDefaultFieldId = temp.getDeclaredField("gDefault");
+            mDefaultFieldId.setAccessible(true);
+            Object gDefault = mDefaultFieldId.get(null);
+            Log.i("msg","获取泛型对象="+gDefault);
+
+            Object rawObjecct = mInstanceFieldId.get(gDefault);
+            Log.i("msg","获取泛型对象="+rawObjecct);
         }catch (Exception e){
             e.printStackTrace();
         }
