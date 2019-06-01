@@ -13,6 +13,8 @@ public class ReflectForMember {
      * 获取构造函数，包括 private, public,也支持无参数和有参数
      */
     public void getConstructor() {
+        Class temp2 = Test.class;
+
         Test test = new Test();
         Class temp = test.getClass();
         String className = temp.getName();
@@ -36,12 +38,12 @@ public class ReflectForMember {
     public void callConstructor(){
         try{
             Class temp = Class.forName("com.xiongliang.reflectionproject.reflect.Test");
-
             Constructor c1 = temp.getDeclaredConstructor();  //调用无参构造函数
             Object object1 = c1.newInstance();
 
             Class[] p1 = {int.class};
-            Constructor c2 = temp.getDeclaredConstructor(p1); //获取有一个参数的构造函数，参数为int
+            Constructor c2 = temp.getDeclaredConstructor(p1);
+            c2.setAccessible(true);
             Object object2 = c2.newInstance(2);
 
 
@@ -62,7 +64,6 @@ public class ReflectForMember {
     public void callPrivateMethod(){
         try{
             Class temp = Class.forName("com.xiongliang.reflectionproject.reflect.Test");
-
             Constructor c1 = temp.getDeclaredConstructor();  //调用无参构造函数
             Object object1 = c1.newInstance();
             Class[] p1 = {String.class};
